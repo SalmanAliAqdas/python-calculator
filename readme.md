@@ -1,97 +1,79 @@
 # Python Calculator
 
-A simple command-line calculator written in Python. It runs in the terminal and asks you for an operator and two numbers.
+A command-line calculator written in Python. Type a full calculation on one line and get the answer instantly.
 
 ## Features
-- Add, subtract, multiply and divide
-- Works with whole numbers and decimals
-- Shows a friendly error for division by zero
-- Asks again if you type an invalid number or operator
-- Keeps running until you quit with `q`
+- Add, subtract, multiply, divide
+- Power (`**`), remainder (`%`), whole-number division (`//`) and square root (`sqrt`)
+- Type calculations on one line, with or without spaces (`5 + 3` or `5+3`)
+- `ans` reuses the previous result (`ans * 2`)
+- History of calculations (`history`, `clear`)
+- Friendly error messages (division by zero, invalid input)
+- Results rounded to 4 decimal places
+- Automated tests
 
 ## Requirements
-- Python 3 installed on your computer
+- Python 3 installed
 - A terminal (for example the one inside VS Code)
 
 ## How to run
-1. Download or clone this repository
-2. Open a terminal in the project folder
-3. Run:
-
 ```
 python calculator.py
 ```
-
 If `python` is not recognized on Windows, use `py calculator.py`.
 
 ## How to use it
-The calculator asks three questions, one at a time. Type only the answer and press Enter after each one. Do not type the whole sum on one line like `2+2`.
+Type a calculation and press Enter. Type `help` inside the program to see all commands.
 
-1. **Operator**: type one of `+`, `-`, `*`, `/`
-2. **First number**: type a number
-3. **Second number**: type a number
-
-The result is shown, and then it asks for a new operator so you can keep calculating. Type `q` at the operator question to quit.
-
-## Examples
-
-**Addition**
 ```
-Operator (+, -, *, /): +
-First number: 5
-Second number: 3
-5.0 + 3.0 = 8.0
-```
-
-**Division with decimals**
-```
-Operator (+, -, *, /): /
-First number: 10
-Second number: 4
-10.0 / 4.0 = 2.5
-```
-
-**Division by zero**
-```
-Operator (+, -, *, /): /
-First number: 5
-Second number: 0
+> 5 + 3
+5 + 3 = 8
+> 2 ** 3
+2 ** 3 = 8
+> 10 / 3
+10 / 3 = 3.3333
+> sqrt 16
+sqrt(16) = 4
+> ans * 2
+4 * 2 = 8
+> 5 / 0
 Error: Cannot divide by zero.
-```
-
-**Wrong operator**
-```
-Operator (+, -, *, /): x
-Unknown operator. Try again.
-```
-
-**Wrong number**
-```
-Operator (+, -, *, /): *
-First number: abc
-Please enter a valid number.
-First number: 6
-Second number: 7
-6.0 * 7.0 = 42.0
-```
-
-**Quit**
-```
-Operator (+, -, *, /): q
+> history
+1. 5 + 3 = 8
+2. 2 ** 3 = 8
+3. 10 / 3 = 3.3333
+4. sqrt(16) = 4
+5. 4 * 2 = 8
+> q
 Goodbye!
 ```
 
-## How the code is organized
-- One small function for each operation (`add`, `subtract`, `multiply`, `divide`)
-- An `OPERATIONS` dictionary that connects each symbol to its function
-- `get_number()` keeps asking until a valid number is entered
-- `main()` runs the loop
+| Input | Meaning |
+|---|---|
+| `+` `-` `*` `/` | add, subtract, multiply, divide |
+| `**` | power |
+| `%` | remainder |
+| `//` | whole-number division |
+| `sqrt 16` | square root |
+| `ans` | previous result |
+| `history` / `clear` | show / clear past calculations |
+| `help` | show help |
+| `q` | quit |
+
+## Running the tests
+```
+python -m unittest -v
+```
+
+## Project structure
+- `calculator.py`: the calculator
+- `test_calculator.py`: automated tests
+- `readme.md`: this file
+
+## Version history
+- **v2**: one-line input, new operations, `ans`, history, tests
+- **v1**: step-by-step prompts with four operations
 
 ## Possible future improvements
-- Power and modulo operations
-- Type a full expression like `2+2` on one line
-- Automated tests
+- Brackets and multi-step expressions like `(2 + 3) * 4`
 - A graphical version
-
-## License
-MIT
